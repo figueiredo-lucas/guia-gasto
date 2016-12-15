@@ -1,0 +1,17 @@
+<md-fab-speed-dial md-direction="left" class="md-fab">
+    <md-fab-trigger></md-fab-trigger>
+    <md-fab-actions>
+        <md-button aria-label="Remover" class="md-fab md-warn md-hue-2 md-mini" ng-click="remover($event, dto)">
+            <md-tooltip md-direction="right">
+                Remover
+            </md-tooltip>
+            <md-icon md-svg-icon="action:delete"></md-icon>
+        </md-button>
+        <md-button aria-label="Editar" class="md-fab md-accent md-mini" ng-click="editar($event, dto)">
+            <md-tooltip md-direction="left" md-autohide="false">
+                Editar
+            </md-tooltip>
+            <md-icon md-svg-icon="image:edit"></md-icon>
+        </md-button>
+    </md-fab-actions>
+</md-fab-speed-dial>

@@ -1,0 +1,56 @@
+<md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
+    <md-toolbar class="md-hue-1 md-toolbar-tools md-tall">
+        <div class="logo big-logo"></div>
+    </md-toolbar>
+    <md-content>
+        <md-list>
+            <md-list-item ui-sref="base.inicio" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.inicio')} ">
+                <p>Início</p>
+            </md-list-item>
+            <md-list-item ui-sref="base.movimento" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.movimento')} ">
+                <p>Movimentos</p>
+            </md-list-item>
+            <md-list-item ui-sref="base.relatorio" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.relatorio')} ">
+                <p>Relatórios</p>
+            </md-list-item>
+        </md-list>
+    </md-content>
+</md-sidenav>
+<md-toolbar>
+    <div class="md-toolbar-tools">
+        <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
+            <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
+        </md-button>
+        <div class="logo small-logo"></div>
+        <span class="hide-xs">Guia Gasto -&nbsp;</span>Momorecos
+        <span flex=""></span>
+
+        <md-menu md-position-mode="target-right target">
+            <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+                <md-icon md-menu-origin md-svg-icon="assets/icons/dots-vertical.svg"></md-icon>
+            </md-button>
+            <md-menu-content width="4">
+                <md-menu-item>
+                    <md-button ng-click="ctrl.announceClick($index)">
+                        Selecionar folha
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ng-click="ctrl.announceClick($index)">
+                        Configurações
+                    </md-button>
+                </md-menu-item>
+                <md-menu-divider></md-menu-divider>
+                <md-menu-item>
+                    <md-button ng-click="logoff()">
+                        Sair
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+
+
+
+    </div>
+</md-toolbar>
+<div ui-view></div>

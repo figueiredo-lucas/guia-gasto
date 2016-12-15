@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, maximum-scale=1.0, initial-scale=1, user-scalable=no">
+    <meta charset="utf-8">
+    <base href="/">
+    <!-- bower:css -->
+    <link rel="stylesheet" href="../bower_components/angular-material/angular-material.css" />
+    <!-- endbower -->
+    <link rel="icon" href="assets/images/favicon.ico">
+    <link rel="stylesheet" href="style/app.css" />
+    <link rel="manifest" href="./manifest.json">
+</head>
+
+<body ng-app="guiaGasto">
+    <!-- bower:js -->
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-messages/angular-messages.js"></script>
+    <script src="../bower_components/angular-animate/angular-animate.js"></script>
+    <script src="../bower_components/angular-aria/angular-aria.js"></script>
+    <script src="../bower_components/angular-material/angular-material.js"></script>
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+    <script src="../bower_components/lodash/lodash.js"></script>
+    <script src="../bower_components/angular-ui-mask/dist/mask.js"></script>
+    <script src="../bower_components/angular-cookies/angular-cookies.js"></script>
+    <!-- endbower -->
+    <!-- modules -->
+    <script src="app.js"></script>
+    <script src="modules/modules.js"></script>
+    <script src="modules/base/menu.controller.js"></script>
+    <script src="modules/login/login.controller.js"></script>
+    <script src="modules/movimento/movimento.controller.js"></script>
+    <!-- componentes -->
+    <script src="components/lf-persistence/lf-persistence.js"></script>
+    <script src="components/lf-persistence/edit-remove/edit-remove.directive.js"></script>
+    <script src="components/lf-persistence/persistence-modal/persistence-modal.directive.js"></script>
+    <script src="components/filters.js"></script>
+    <div ui-view></div>
+</body>
+
+</html>

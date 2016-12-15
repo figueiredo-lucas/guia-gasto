@@ -1,0 +1,56 @@
+<md-dialog aria-label="Produto" ng-cloak flex="50">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-show="!editar">Novo movimento</h2>
+                <h2 ng-show="editar">Alterar movimento</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="fechar()">
+                    <md-icon md-svg-icon="icons:close" aria-label="Fechar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content ng-form="form">
+            <div class="md-dialog-content" flex>
+                <div layout="row">
+                    <div layout="column" flex>
+                        <md-input-container flex>
+                            <label>Marca</label>
+                            <md-select ng-model="dto.marca" required name="marca">
+                                <md-option ng-repeat="marca in fields.marcas" value="{{marca._id}}">
+                                    {{marca.nome}}
+                                </md-option>
+                            </md-select>
+                            <div ng-messages="form.marca.$error">
+                                <div ng-message="required">Campo Marca é obrigatório</div>
+                            </div>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Valor (R$)</label>
+                            <input ng-model="dto.valorBase" />
+                        </md-input-container>
+
+                    </div>
+                </div>
+                <div layout="row">
+                    <md-input-container flex>
+                        <label>Descrição</label>
+                        <textarea cols="100" ng-model="dto.descricao" name="descricao" required></textarea>
+                        <div ng-messages="form.descricao.$error">
+                            <div ng-message="required">Campo Descrição é obrigatório</div>
+                        </div>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised md-warn md-hue-2" ng-click="fechar()">
+                Cancelar
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="salvar(dto)">
+                Salvar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

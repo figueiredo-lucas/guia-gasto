@@ -1,0 +1,23 @@
+{
+    "name": "guia-gasto",
+    "version": "1.0.0",
+    "description": "Guia simples de gastos diários",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "lucas.figueiredo",
+    "license": "ISC",
+    "devDependencies": {
+        "gulp": "^3.9.1",
+        "gulp-express": "^0.3.5",
+        "gulp-sass": "^2.3.2",
+        "wiredep": "^4.0.0"
+    },
+    "dependencies": {
+        "express": "^4.14.0",
+        "lodash": "^4.13.1",
+        "moment": "^2.14.1",
+        "mongoose": "^4.5.3"
+    }
+}
