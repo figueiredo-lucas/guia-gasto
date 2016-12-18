@@ -18,10 +18,10 @@ angular.module('lfPersistence').directive('persistenceModal', [
             },
             link: function(scope, element, attrs) {
 
-                var properties = {
-                    transformRequest: angular.identity,
-                    headers: { 'Content-Type': undefined }
-                };
+                // var properties = {
+                //     transformRequest: angular.identity,
+                //     headers: { 'Content-Type': undefined }
+                // };
 
                 var edicao = $rootScope.$on('editar', function(ev, mouseEvent, dto) {
                     ev.stopPropagation();
@@ -31,27 +31,27 @@ angular.module('lfPersistence').directive('persistenceModal', [
                     scope.abrirModal(mouseEvent, dto);
                 });
 
-                var getFormData = function(dto) {
-                    var formData = new FormData();
-                    for (var prop in dto) {
-                        if (dto[prop] instanceof Blob) {
-                            formData.append("file", dto[prop]);
-                        } else {
-                            formData.append(prop, dto[prop]);
-                        }
-                    }
-                    return formData;
-                };
+                // var getFormData = function(dto) {
+                //     var formData = new FormData();
+                //     for (var prop in dto) {
+                //         if (dto[prop] instanceof Blob) {
+                //             formData.append("file", dto[prop]);
+                //         } else {
+                //             formData.append(prop, dto[prop]);
+                //         }
+                //     }
+                //     return formData;
+                // };
 
-                var existeFileField = function(dto) {
-                    var propertyName = undefined;
-                    for (var prop in dto) {
-                        if (dto[prop] instanceof Blob) {
-                            propertyName = prop;
-                        }
-                    }
-                    return propertyName;
-                };
+                // var existeFileField = function(dto) {
+                //     var propertyName = undefined;
+                //     for (var prop in dto) {
+                //         if (dto[prop] instanceof Blob) {
+                //             propertyName = prop;
+                //         }
+                //     }
+                //     return propertyName;
+                // };
 
                 scope.$on('$destroy', edicao);
 
@@ -60,8 +60,8 @@ angular.module('lfPersistence').directive('persistenceModal', [
                     $scope.fields = fields;
 
                     var save = function(dto) {
-                        var formData = getFormData(dto);
-                        $http.post(endpoint, formData, properties).then(function(obj) {
+                        // var formData = getFormData(dto);
+                        $http.post(endpoint, dto).then(function(obj) {
                             list.push(obj.data);
                             $scope.$emit('toast', 'Registro cadastrado com sucesso!');
                         });
@@ -69,8 +69,8 @@ angular.module('lfPersistence').directive('persistenceModal', [
 
                     var update = function(dto) {
                         angular.extend(dtoEdit, dto);
-                        var formData = getFormData(dtoEdit);
-                        $http.put(endpoint + '/' + dtoEdit._id, formData, properties).then(function() {
+                        // var formData = getFormData(dtoEdit);
+                        $http.put(endpoint + '/' + dtoEdit._id, dtoEdit).then(function() {
                             $scope.$emit('toast', 'Registro atualizado com sucesso!');
                         });
                     };
@@ -88,10 +88,10 @@ angular.module('lfPersistence').directive('persistenceModal', [
                         $scope.form.$setSubmitted();
                         if ($scope.form.$valid) {
                             var dto = angular.copy(pDto);
-                            var propertyName = existeFileField(dto);
-                            if (propertyName) {
-                                dto[propertyName] = pDto[propertyName];
-                            }
+                            // var propertyName = existeFileField(dto);
+                            // if (propertyName) {
+                            //     dto[propertyName] = pDto[propertyName];
+                            // }
                             if (dtoEdit) {
                                 update(dto);
                             } else {
@@ -103,8 +103,6 @@ angular.module('lfPersistence').directive('persistenceModal', [
                 };
 
                 scope.abrirModal = function(ev, pDto) {
-                    console.log('media sm:' + $mdMedia('sm'));
-                    console.log('media xs:' + $mdMedia('xs'));
                     var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
                     ev.stopImmediatePropagation();
                     $mdDialog.show({

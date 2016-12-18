@@ -1,0 +1,48 @@
+<md-dialog aria-label="Folha" flex="50">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2 ng-show="!editar">Nova folha</h2>
+                <h2 ng-show="editar">Alterar folha</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="fechar()">
+                    <md-icon md-svg-icon="icons:close" aria-label="Fechar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <span ng-show="false">
+        {{fields.primeiraFolha ? dto.folhaPadrao = true: ''}} {{dto.codigoUsuario = fields.codigoUsuario}}
+        </span>
+        <md-dialog-content ng-form="form">
+            <div class="md-dialog-content" flex>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <md-switch ng-model="dto.folhaPadrao" aria-label="Folha padrão" ng-disabled="fields.primeiraFolha">
+                            Folha padrão
+                        </md-switch>
+                    </md-input-container>
+                </div>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <label>Folha</label>
+                        <input ng-model="dto.nomeFolha" name="nomeFolha" required />
+                        <div ng-messages="form.nomeFolha.$error">
+                            <div ng-message="required">Campo Folha é obrigatório</div>
+                        </div>
+                    </md-input-container>
+                </div>
+
+
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised md-warn md-hue-2" ng-click="fechar()">
+                Cancelar
+            </md-button>
+            <md-button class="md-raised md-primary" ng-click="salvar(dto)">
+                Salvar
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

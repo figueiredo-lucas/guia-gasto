@@ -22,17 +22,22 @@
             <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
         </md-button>
         <div class="logo small-logo"></div>
-        <span class="hide-xs">Guia Gasto -&nbsp;</span>Momorecos
+        <span class="hide-xs">Guia Gasto</span><span class="hide-xs" ng-show="!!usuarioLogado.folhaSelecionada">&nbsp;-&nbsp;</span>{{usuarioLogado.folhaSelecionada.nomeFolha}}
         <span flex=""></span>
 
         <md-menu md-position-mode="target-right target">
-            <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)">
+            <md-button class="md-icon-button" ng-click="$mdOpenMenu($event)" aria-label="Menu de configurações">
                 <md-icon md-menu-origin md-svg-icon="assets/icons/dots-vertical.svg"></md-icon>
             </md-button>
             <md-menu-content width="4">
-                <md-menu-item>
-                    <md-button ng-click="ctrl.announceClick($index)">
+                <md-menu-item ng-show="usuarioLogado.folhas.length > 1">
+                    <md-button ng-click="selecionarFolha($event)">
                         Selecionar folha
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button ui-sref="base.folha">
+                        Gerenciar folhas
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>

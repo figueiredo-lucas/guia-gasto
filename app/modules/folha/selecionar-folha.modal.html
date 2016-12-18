@@ -1,0 +1,27 @@
+<md-dialog aria-label="Folha" flex="50">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Selecionar folha</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="fechar()">
+                    <md-icon md-svg-icon="icons:close" aria-label="Fechar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content ng-form="form">
+            <div class="md-dialog-content" flex>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <label>Folha</label>
+                        <md-select ng-model="folhaSelecionada" required name="folha">
+                            <md-option ng-repeat="folha in folhas" ng-value="folha._id">
+                                {{folha.nomeFolha}}
+                            </md-option>
+                        </md-select>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+    </form>
+</md-dialog>

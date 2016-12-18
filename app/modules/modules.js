@@ -20,4 +20,10 @@ angular.module('guiaGasto').config(function($stateProvider) {
         controller: 'MovimentoCtrl'
     });
 
+    $stateProvider.state('base.folha', {
+        url: 'folha',
+        templateUrl: 'app/modules/folha/folha.view.html',
+        controller: 'FolhaCtrl'
+    });
+
 });

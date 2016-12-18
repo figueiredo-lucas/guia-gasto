@@ -1,0 +1,27 @@
+<div layout="" ng-cloak>
+    <span flex="15" class="hide show-gt-sm"></span>
+    <md-content layout-padding flex="auto" ng-show="folhas.length > 0">
+        <md-toolbar class="md-whiteframe-z1">
+            <div class="md-toolbar-tools">
+                <h2 class="md-flex">Folhas</h2>
+            </div>
+        </md-toolbar>
+        <md-content flex class="md-whiteframe-z1 override-padding">
+            <md-list>
+                <md-list-item ng-repeat="folha in folhas" ng-class="{ 'md-accent': folha.folhaPadrao }">
+                    <div>
+                        <h3>{{folha.nomeFolha}}</h3>
+                    </div>
+                    <div class="md-secondary">
+                        <edit-remove dto="folha" list="folhas" endpoint="rest/folhas"></edit-remove>
+                    </div>
+                    <md-divider></md-divider>
+                </md-list-item>
+            </md-list>
+        </md-content>
+
+    </md-content>
+    <span flex="15" class="hide show-gt-sm"></span>
+    <persistence-modal template-url="app/modules/folha/folha.modal.html" list="folhas" fields="fields" endpoint="rest/folhas">
+    </persistence-modal>
+</div>

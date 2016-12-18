@@ -26,8 +26,9 @@ angular.module('guiaGasto', [
         .iconSet('social', '../assets/iconsets/social-icons.svg', 24)
         .iconSet('toggle', '../assets/iconsets/toggle-icons.svg', 24)
         .iconSet('avatar', '../assets/iconsets/avatar-icons.svg', 128);
-}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider) {
+}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider, $qProvider) {
     $mdThemingProvider.theme("error-toast");
+    $qProvider.errorOnUnhandledRejections(true);
 
     $mdThemingProvider.theme('default')
         .primaryPalette('light-blue')
@@ -42,4 +43,30 @@ angular.module('guiaGasto', [
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
+}).run(function($rootScope, $mdToast, $cookieStore) {
+
+    $rootScope.usuarioLogado = $cookieStore.get('usuario');
+    console.log($cookieStore.get('usuario'));
+
+    $rootScope.$on('toast', function(ev, texto, erro) {
+        if (erro) {
+            var ctrl = function($scope, msg) {
+                $scope.msg = msg;
+            };
+            $mdToast.show({
+                controller: ctrl,
+                template: '<md-toast class="error-toast">{{msg}}</md-toast>',
+                hideDelay: 5000,
+                position: "top right",
+                locals: {
+                    msg: texto
+                }
+            });
+        } else {
+            $mdToast.show($mdToast.simple()
+                .textContent(texto)
+                .position("top right")
+                .hideDelay(3000));
+        }
+    });
 });

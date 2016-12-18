@@ -5,7 +5,7 @@ angular.module('lfPersistence').directive('editRemove', [
     '$http',
     function($mdDialog, $http) {
         return {
-            templateUrl: 'lf-persistence/edit-remove/edit-remove.html',
+            templateUrl: 'components/lf-persistence/edit-remove/edit-remove.html',
             restrict: 'E',
             scope: {
                 dto: "=",

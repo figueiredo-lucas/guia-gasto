@@ -7,7 +7,9 @@ angular.module('guiaGasto').controller('MenuCtrl', [
     '$http',
     '$mdSidenav',
     '$cookieStore',
-    function($scope, $state, $location, $http, $mdSidenav, $cookieStore) {
+    '$mdDialog',
+    '$mdMedia',
+    function($scope, $state, $location, $http, $mdSidenav, $cookieStore, $mdDialog, $mdMedia) {
 
         //criar lógica para verificar se estou logado, se não, redirecionar para a tela de login (login)
 
@@ -29,5 +31,32 @@ angular.module('guiaGasto').controller('MenuCtrl', [
             $state.go('login');
         }
 
+        var SelecionarFolhaCtrl = function($scope, $cookieStore) {
+
+            var usuarioLogado = $scope.$root.usuarioLogado;
+
+            $scope.folhas = usuarioLogado.folhas;
+
+            $scope.folhaSelecionada = usuarioLogado.folhaSelecionada ? usuarioLogado.folhaSelecionada._id : undefined;
+
+            $scope.$watch('folhaSelecionada', function(folhaSelecionada, folhaSelecionadaAnterior) {
+                if (folhaSelecionada !== folhaSelecionadaAnterior) {
+                    usuarioLogado.folhaSelecionada = _.find($scope.folhas, { _id: folhaSelecionada });
+                    $cookieStore.put('usuario', usuarioLogado);
+                    $mdDialog.hide();
+                }
+            });
+        };
+
+        $scope.selecionarFolha = function(ev) {
+            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
+            $mdDialog.show({
+                controller: SelecionarFolhaCtrl,
+                templateUrl: 'app/modules/folha/selecionar-folha.modal.html',
+                targetEvent: ev,
+                clickOutsideToClose: true,
+                fullscreen: useFullScreen
+            });
+        };
     }
 ]);

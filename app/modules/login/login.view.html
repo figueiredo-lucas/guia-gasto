@@ -1,29 +1,37 @@
-<div layout="row">
-    &nbsp;
-</div>
-<div layout="row" flex>
-    <div class="logo big-logo"></div>
-</div>
-<div layout="row" flex>
-    <span flex="40" class="hide-xs"></span>
-    <md-input-container flex>
-        <label>Usuário</label>
-        <input ng-model="dto.usuario" />
-    </md-input-container>
-    <span flex="40" class="hide-xs"></span>
-</div>
-<div layout="row" flex>
-    <span flex="40" class="hide-xs"></span>
-    <md-input-container flex>
-        <label>Senha</label>
-        <input type="password" ng-model="dto.senha" />
-    </md-input-container>
-    <span flex="40" class="hide-xs"></span>
-</div>
-<div layout="row" flex>
-    <span flex="40" class="hide-xs"></span>
-    <md-button flex class="md-raised md-primary" ng-click="acessar(dto)">
-        Acessar
-    </md-button>
-    <span flex="40" class="hide-xs"></span>
-</div>
+<form name="frmLogin">
+    <div layout="row">
+        &nbsp;
+    </div>
+    <div layout="row" flex>
+        <div class="logo big-logo"></div>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Usuário</label>
+            <input ng-model="dto.login" name="usuario" required md-no-asterisk />
+            <div ng-messages="frmLogin.usuario.$error">
+                <div ng-message="required">Campo usuário é obrigatório</div>
+            </div>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Senha</label>
+            <input type="password" name="password" ng-model="dto.senha" required md-no-asterisk />
+            <div ng-messages="frmLogin.password.$error">
+                <div ng-message="required">Campo senha é obrigatório</div>
+            </div>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-button flex class="md-raised md-primary" ng-click="acessar(dto)">
+            Acessar
+        </md-button>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+</form>

@@ -39,7 +39,6 @@ module.exports = exports = function(config) {
     // Creates a new Object in the DB.
     methods.create = function(req, res) {
         try {
-            console.log(req.body);
             validator.preSave(req.body);
             Model.create(req.body, function(err, object) {
                 validator.mongoError(err);
