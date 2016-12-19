@@ -4,10 +4,19 @@ angular.module('guiaGasto').controller('MovimentoCtrl', [
     '$scope',
     '$http',
     function($scope, $http) {
-        $scope.fields = {};
+        $scope.fields = {
+            codigoFolha: $scope.usuarioLogado.folhaSelecionada._id,
+            tipo: 'E'
+        };
 
-        // $http.get('rest/movimentos').success(function(movimentos) {
-        //     $scope.movimentos = movimentos;
-        // });
+        $scope.tipos = ['E', 'S'];
+
+        $http.get('rest/movimentos/folha/' + $scope.usuarioLogado.folhaSelecionada._id).then(function(movimentos) {
+            $scope.movimentos = movimentos.data;
+        });
+
+        $scope.filtrar = function(movimento) {            
+            return _.includes($scope.tipos, movimento.tipo);
+        }
     }
 ]);

@@ -8,9 +8,9 @@
         </md-toolbar>
         <md-content flex class="md-whiteframe-z1 override-padding">
             <md-list>
-                <md-list-item ng-repeat="folha in folhas" ng-class="{ 'md-accent': folha.folhaPadrao }">
-                    <div>
-                        <h3>{{folha.nomeFolha}}</h3>
+                <md-list-item ng-repeat="folha in folhas" >
+                    <div class="md-list-item-text">
+                        <p>{{folha.nomeFolha}}</p>
                     </div>
                     <div class="md-secondary">
                         <edit-remove dto="folha" list="folhas" endpoint="rest/folhas"></edit-remove>

@@ -37,25 +37,28 @@ angular.module('guiaGasto').controller('MenuCtrl', [
 
             $scope.folhas = usuarioLogado.folhas;
 
+            $scope.fechar = function() {
+                $mdDialog.hide();
+            }
+
             $scope.folhaSelecionada = usuarioLogado.folhaSelecionada ? usuarioLogado.folhaSelecionada._id : undefined;
 
             $scope.$watch('folhaSelecionada', function(folhaSelecionada, folhaSelecionadaAnterior) {
                 if (folhaSelecionada !== folhaSelecionadaAnterior) {
                     usuarioLogado.folhaSelecionada = _.find($scope.folhas, { _id: folhaSelecionada });
                     $cookieStore.put('usuario', usuarioLogado);
-                    $mdDialog.hide();
+                    $scope.fechar();
                 }
             });
         };
 
         $scope.selecionarFolha = function(ev) {
-            var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
             $mdDialog.show({
                 controller: SelecionarFolhaCtrl,
                 templateUrl: 'app/modules/folha/selecionar-folha.modal.html',
                 targetEvent: ev,
                 clickOutsideToClose: true,
-                fullscreen: useFullScreen
+                fullscreen: false
             });
         };
     }

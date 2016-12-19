@@ -1,8 +1,8 @@
 module.exports = {
 
     requiredFields: [{
-        field: 'codigoUsuario',
-        name: 'Usuário'
+        field: 'codigoFolha',
+        name: 'Folha'
     }, {
         field: 'valor',
         name: 'Valor'

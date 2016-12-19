@@ -14,7 +14,7 @@
                 <div layout="row" flex>
                     <md-input-container flex>
                         <label>Folha</label>
-                        <md-select ng-model="folhaSelecionada" required name="folha">
+                        <md-select ng-model="folhaSelecionada" required name="folha" md-no-asterisk>
                             <md-option ng-repeat="folha in folhas" ng-value="folha._id">
                                 {{folha.nomeFolha}}
                             </md-option>
