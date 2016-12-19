@@ -2,19 +2,29 @@
     <span flex="15" class="hide show-gt-sm"></span>
     <md-content layout-padding flex="auto" ng-show="movimentos.length > 0">
         <md-toolbar class="md-whiteframe-z1">
-            <div class="md-toolbar-tools">
-                <h2 class="md-flex">Movimentos</h2>
+            <div class="md-toolbar-tools" layout="row">
+                <div flex="20">
+                    <h2 class="md-flex hide show-gt-sm">Movimentos</h2>
+                    <h2 class="md-flex hide-gt-sm">Mov.</h2>
+                </div>
+                <span flex="50" class="hide show-gt-sm"></span>
+                <div flex class="checkbox-align">
+                    <md-select ng-model="tipos" multiple class="md-hue-3" aria-label="Ganho/Gasto">
+                        <md-option ng-value="'E'" >Ganhos</md-option>
+                        <md-option ng-value="'S'" >Gastos</md-option>
+                    </md-select>
+                </div>
             </div>
         </md-toolbar>
         <md-content flex class="md-whiteframe-z1 override-padding">
             <md-list>
-                <md-list-item ng-repeat="movimento in movimentos" class="md-2-line">
+                <md-list-item ng-repeat="movimento in movimentos | filter: filtrar" class="md-2-line">
                     <div class="md-list-item-text">
-                        <h3>{{movimento.descricao}} - {{movimento.valor | currency:"R$ ": 2}}</h3>
-                        <p>{{movimento.data | date: 'dd/MM/yyyy'}}</p>
+                        <h3>{{movimento.descricao}}</h3>
+                        <p>{{movimento.data | date: "dd/MM/yyyy 'às' hh:mm"}}</p>
                     </div>
-                    <div class="md-secondary">
-                        <edit-remove dto="movimento" list="movimentos" endpoint="rest/movimentos"></edit-remove>
+                    <div class="md-secondary" ng-class="{saida: (movimento.tipo === 'S'), entrada: (movimento.tipo === 'E')}">
+                        {{movimento.valor | currency:"R$ ": 2}}
                     </div>
                     <md-divider></md-divider>
                 </md-list-item>

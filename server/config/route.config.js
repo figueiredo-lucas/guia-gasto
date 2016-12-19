@@ -17,7 +17,8 @@ module.exports = {
     MOVIMENTO: {
         model: 'movimento',
         validator: require('./../rest/validators/movimento'),
-        route: '/rest/movimentos'
+        route: '/rest/movimentos',
+        rest: './rest/movimento.rest'
     },
     USUARIO: {
         model: 'usuario',

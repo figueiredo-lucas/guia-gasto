@@ -49,10 +49,14 @@ md-toast.error-toast {
     }
 }
 
-.ativo {
+.ativo, .entrada {
     color: green;
 }
 
-.inativo {
+.inativo, .saida {
     color: red;
+}
+
+.checkbox-align {
+    text-align: right;
 }

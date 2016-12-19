@@ -7,6 +7,7 @@ angular.module('guiaGasto', [
     'ngMaterial',
     'lfPersistence',
     'ngCookies',
+    'ui.utils.masks',
 ]).config(function($mdIconProvider) {
     $mdIconProvider
         .iconSet('action', '../assets/iconsets/action-icons.svg', 24)
@@ -26,9 +27,8 @@ angular.module('guiaGasto', [
         .iconSet('social', '../assets/iconsets/social-icons.svg', 24)
         .iconSet('toggle', '../assets/iconsets/toggle-icons.svg', 24)
         .iconSet('avatar', '../assets/iconsets/avatar-icons.svg', 128);
-}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider, $qProvider) {
+}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider) {
     $mdThemingProvider.theme("error-toast");
-    $qProvider.errorOnUnhandledRejections(true);
 
     $mdThemingProvider.theme('default')
         .primaryPalette('light-blue')

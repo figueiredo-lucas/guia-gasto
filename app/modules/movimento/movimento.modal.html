@@ -1,4 +1,4 @@
-<md-dialog aria-label="Movimento" ng-cloak flex="50">
+<md-dialog aria-label="Movimento" flex="50">
     <form>
         <md-toolbar>
             <div class="md-toolbar-tools">
@@ -10,30 +10,27 @@
                 </md-button>
             </div>
         </md-toolbar>
+        <span ng-show="false">{{dto.tipo = fields.tipo}} {{dto.codigoFolha = fields.codigoFolha}}</span>
         <md-dialog-content ng-form="form">
             <div class="md-dialog-content" flex>
                 <div layout="row">
-                    <div layout="column" flex>
-                        <md-input-container flex>
-                            <label>Marca</label>
-                            <md-select ng-model="dto.marca" required name="marca">
-                                <md-option ng-repeat="marca in fields.marcas" value="{{marca._id}}">
-                                    {{marca.nome}}
-                                </md-option>
-                            </md-select>
-                            <div ng-messages="form.marca.$error">
-                                <div ng-message="required">Campo Marca é obrigatório</div>
-                            </div>
-                        </md-input-container>
-                        <md-input-container flex>
-                            <label>Valor (R$)</label>
-                            <input ng-model="dto.valorBase" />
-                        </md-input-container>
-
-                    </div>
-                </div>
-                <div layout="row">
                     <md-input-container flex>
+                        <md-radio-group ng-model="fields.tipo">
+                            <md-radio-button value="E">Ganho</md-radio-button>
+                            <md-radio-button value="S">Gasto</md-radio-button>
+                        </md-radio-group>
+                    </md-input-container>
+                </div>
+                <div layout-xs="column" layout="row">
+                    <md-input-container flex-gt-xs="20" flex>
+                        <label>Valor (R$)</label>
+                        <input ng-model="dto.valor" name="valor" ui-money-mask="2" required />
+                        <div ng-messages="form.valor.$error">
+                            <div ng-message="required">Campo Valor (R$) é obrigatório</div>
+                        </div>
+                    </md-input-container>
+                    <span flex-gt-xs="5" flex="5"></span>
+                    <md-input-container flex-gt-xs="75" flex>
                         <label>Descrição</label>
                         <textarea cols="100" ng-model="dto.descricao" name="descricao" required></textarea>
                         <div ng-messages="form.descricao.$error">
