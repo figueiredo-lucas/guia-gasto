@@ -10,8 +10,8 @@
                 <span flex="50" class="hide show-gt-sm"></span>
                 <div flex class="checkbox-align">
                     <md-select ng-model="tipos" multiple class="md-hue-3" aria-label="Ganho/Gasto">
-                        <md-option ng-value="'E'" >Ganhos</md-option>
-                        <md-option ng-value="'S'" >Gastos</md-option>
+                        <md-option ng-value="'E'">Ganhos</md-option>
+                        <md-option ng-value="'S'">Gastos</md-option>
                     </md-select>
                 </div>
             </div>
@@ -21,7 +21,7 @@
                 <md-list-item ng-repeat="movimento in movimentos | filter: filtrar" class="md-2-line">
                     <div class="md-list-item-text">
                         <h3>{{movimento.descricao}}</h3>
-                        <p>{{movimento.data | date: "dd/MM/yyyy 'às' hh:mm"}}</p>
+                        <p>{{movimento.data | date: "dd/MM/yyyy 'às' HH:mm"}}</p>
                     </div>
                     <div class="md-secondary" ng-class="{saida: (movimento.tipo === 'S'), entrada: (movimento.tipo === 'E')}">
                         {{movimento.valor | currency:"R$ ": 2}}
