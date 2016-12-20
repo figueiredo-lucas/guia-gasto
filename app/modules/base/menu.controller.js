@@ -48,6 +48,8 @@ angular.module('guiaGasto').controller('MenuCtrl', [
                     usuarioLogado.folhaSelecionada = _.find($scope.folhas, { _id: folhaSelecionada });
                     $cookieStore.put('usuario', usuarioLogado);
                     $scope.fechar();
+                    $scope.$emit('atualizar-saldo');
+                    $state.go('base');
                 }
             });
         };

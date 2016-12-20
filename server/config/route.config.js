@@ -4,11 +4,11 @@ module.exports = {
     //     validator: require('./../rest/validators/fornecedor'),
     //     route: '/rest/fornecedores'
     // },
-    // CLIENTE: {
-    //     model: 'pessoa',
-    //     validator: require('./../rest/validators/cliente'),
-    //     route: '/rest/clientes'
-    // },
+    SALDO: {
+        model: 'saldo',
+        route: '/rest/saldos',
+        rest: './rest/saldo.rest'
+    },
     FOLHA: {
         model: 'folha',
         route: '/rest/folhas',

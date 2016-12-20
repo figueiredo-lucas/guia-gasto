@@ -1,6 +1,5 @@
 'use strict';
 
-var express = require('express');
 var Movimento = require('./models/movimento.model');
 
 module.exports = function(config) {

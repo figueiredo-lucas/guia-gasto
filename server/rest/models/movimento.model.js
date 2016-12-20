@@ -2,7 +2,6 @@
 
 var mongoose = require('mongoose');
 var Saldo = require('./saldo.model');
-var moment = require('moment');
 var _ = require('lodash');
 
 var Schema = mongoose.Schema;
@@ -14,7 +13,7 @@ var Movimento = new Schema({
     descricao: String,
     data: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 });
 
@@ -28,22 +27,22 @@ Movimento.pre('save', function(next) {
 
 Movimento.post('save', function() {
     var that = this;
-    Saldo.findOne({codigoFolha: this.codigoFolha}).sort({data: -1}).exec(function(err, doc) {
+    Saldo.findOne({ codigoFolha: this.codigoFolha }).sort({ data: -1 }).exec(function(err, doc) {
         var novoSaldo = {
             codigoFolha: that.codigoFolha,
             codigoMovimento: that._id,
             saldo: 0
         }
-        if(doc) {
+        if (doc) {
             novoSaldo.saldo = doc.saldo;
         }
-        if(that.tipo === 'E') {
+        if (that.tipo === 'E') {
             novoSaldo.saldo += that.valor;
         } else {
             novoSaldo.saldo -= that.valor;
         }
         Saldo.create(novoSaldo, function(err) {
-            if(err) {
+            if (err) {
                 throw err;
             }
         });
