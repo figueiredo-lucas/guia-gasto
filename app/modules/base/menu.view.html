@@ -1,10 +1,13 @@
 <md-sidenav class="md-sidenav-left md-whiteframe-z2" md-component-id="left">
-    <md-toolbar class="md-hue-1 md-toolbar-tools md-tall">
-        <div class="logo big-logo"></div>
+    <md-toolbar class="md-hue-1 md-toolbar-tools md-tall hide-xs">
+        <div class="logo big-logo center"></div>
+    </md-toolbar>
+    <md-toolbar class="md-hue-1 md-toolbar-tools hide-gt-xs">
+        <div class="logo small-logo center"></div>
     </md-toolbar>
     <md-content>
         <md-list>
-            <md-list-item ui-sref="base.inicio" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.inicio')} ">
+            <md-list-item ui-sref="base" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.inicio')} ">
                 <p>Início</p>
             </md-list-item>
             <md-list-item ui-sref="base.movimento" ng-click="toggleLeft()" ng-class="{'menu-ativo' : isActive('base.movimento')} ">
@@ -21,7 +24,7 @@
         <md-button ng-click="toggleLeft()" class="md-icon-button" aria-label="Settings">
             <md-icon md-svg-icon="assets/icons/menu.svg"></md-icon>
         </md-button>
-        <div class="logo small-logo"></div>
+        <div class="logo small-logo hide-xs"></div>
         <span class="hide-xs">Guia Gasto</span><span class="hide-xs" ng-show="!!usuarioLogado.folhaSelecionada">&nbsp;-&nbsp;</span>{{usuarioLogado.folhaSelecionada.nomeFolha}}
         <span flex=""></span>
         <span ng-controller="SaldoCtrl" ng-class="{'saida': (usuarioLogado.saldo < 0)}">{{usuarioLogado.saldo | currency:"R$ ": 2}}</span>
@@ -32,22 +35,26 @@
             <md-menu-content width="4">
                 <md-menu-item ng-show="usuarioLogado.folhas.length > 1">
                     <md-button ng-click="selecionarFolha($event)">
+                        <md-icon md-svg-icon="action:check_circle"></md-icon>
                         Selecionar folha
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
                     <md-button ui-sref="base.folha">
+                        <md-icon md-svg-icon="action:extension"></md-icon>
                         Gerenciar folhas
                     </md-button>
                 </md-menu-item>
                 <md-menu-item>
                     <md-button ng-click="ctrl.announceClick($index)">
+                        <md-icon md-svg-icon="action:build"></md-icon>
                         Configurações
                     </md-button>
                 </md-menu-item>
                 <md-menu-divider></md-menu-divider>
                 <md-menu-item>
                     <md-button ng-click="logoff()">
+                        <md-icon md-svg-icon="action:exit_to_app"></md-icon>
                         Sair
                     </md-button>
                 </md-menu-item>
@@ -58,4 +65,23 @@
 
     </div>
 </md-toolbar>
-<div ui-view></div>
+<div ui-view>
+    <div layout="row">
+        <span flex-gt-xs="25"></span>
+        <div flex-gt-xs="50" flex layout="row" layout-xs="column">
+            <md-button class="md-raised md-accent" flex-gt-xs>
+                <md-icon class="block" md-svg-icon="action:view_list"></md-icon>
+                Extrato
+            </md-button>
+            <md-button class="md-raised md-accent" ui-sref="base.movimento" flex-gt-xs>
+                <md-icon class="block" md-svg-icon="action:swap_horiz"></md-icon>
+                Movimentos
+            </md-button>
+            <md-button class="md-raised md-warn" flex-gt-xs>
+                <md-icon class="block" md-svg-icon="av:equalizer"></md-icon>
+                Relatórios
+            </md-button>
+        </div>
+        <span flex-gt-xs="25"></span>
+    </div>
+</div>

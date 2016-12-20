@@ -16,7 +16,7 @@ angular.module('guiaGasto').controller('MovimentoCtrl', [
         });
 
         $scope.$watch('movimentos', function(movimentos, old) {
-            if (movimentos && movimentos.length > 0 && movimentos.length != old.length) {
+            if (movimentos && movimentos.length > 0 && old && movimentos.length != old.length) {
                 $scope.$emit('atualizar-saldo');
             }
         }, true);

@@ -16,11 +16,13 @@
   height: 60px;
   background-size: 60px; }
 
+.center {
+  margin: 0px auto; }
+
 .big-logo {
   width: 120px;
   height: 120px;
-  background-size: 120px;
-  margin: 0px auto; }
+  background-size: 120px; }
 
 .override-padding {
   padding: 0px !important;
@@ -35,10 +37,17 @@
 md-toast.error-toast .md-toast-content {
   background-color: rgba(216, 67, 21, 0.8); }
 
-.ativo, .entrada {
+md-icon.block {
+  display: block;
+  height: 50px;
+  width: 50px; }
+
+.ativo,
+.entrada {
   color: green; }
 
-.inativo, .saida {
+.inativo,
+.saida {
   color: red; }
 
 .checkbox-align {
