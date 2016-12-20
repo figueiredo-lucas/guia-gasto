@@ -15,7 +15,13 @@ angular.module('guiaGasto').controller('MovimentoCtrl', [
             $scope.movimentos = movimentos.data;
         });
 
-        $scope.filtrar = function(movimento) {            
+        $scope.$watch('movimentos', function(movimentos, old) {
+            if (movimentos && movimentos.length > 0 && old && movimentos.length != old.length) {
+                $scope.$emit('atualizar-saldo');
+            }
+        }, true);
+
+        $scope.filtrar = function(movimento) {
             return _.includes($scope.tipos, movimento.tipo);
         }
     }

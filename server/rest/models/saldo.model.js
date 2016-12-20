@@ -9,7 +9,7 @@ var Saldo = new Schema({
     saldo: Number,
     data: {
         type: Date,
-        default: Date.now()
+        default: Date.now
     }
 });
 

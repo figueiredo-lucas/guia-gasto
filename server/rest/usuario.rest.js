@@ -1,6 +1,5 @@
 'use strict';
 
-var express = require('express');
 var Usuario = require('./models/usuario.model');
 var encrypt = require('./../components/encrypt')
 
