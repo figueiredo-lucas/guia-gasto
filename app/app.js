@@ -33,13 +33,6 @@ angular.module('guiaGasto', [
     $mdThemingProvider.theme('default')
         .primaryPalette('light-blue')
         .accentPalette('blue');
-    // .primaryPalette('grey', {
-    //     'default': '900',
-    //     'hue-1': '300',
-    //     'hue-2': '500',
-    //     'hue-3': '700'
-    // })
-    // .accentPalette('orange');
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);

@@ -58,6 +58,17 @@ md-icon.block {
     width: 50px;
 }
 
+.data-pequena {
+    font-size: 16px;
+    font-weight: 500;
+    letter-spacing: 0.010em;
+    margin: 0 0 0 0;
+    line-height: 1.6em;
+    .cinza {
+        color: rgb(224, 224, 224);
+    }
+}
+
 .ativo,
 .entrada {
     color: green;

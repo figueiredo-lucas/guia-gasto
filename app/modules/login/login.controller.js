@@ -21,7 +21,7 @@ angular.module('guiaGasto').controller('LoginCtrl', [
                     }
                     return $state.go('base');
                 }, function(err) {
-                    $scope.$emit('toast', err.data)
+                    $scope.$emit('toast', err.data, true)
                 });
             }
         };

@@ -26,4 +26,10 @@ angular.module('guiaGasto').config(function($stateProvider) {
         controller: 'FolhaCtrl'
     });
 
+    $stateProvider.state('base.extrato', {
+        url: 'extrato',
+        templateUrl: 'app/modules/extrato/extrato.view.html',
+        controller: 'ExtratoCtrl'
+    });
+
 });

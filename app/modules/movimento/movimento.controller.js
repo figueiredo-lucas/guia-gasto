@@ -2,8 +2,8 @@
 
 angular.module('guiaGasto').controller('MovimentoCtrl', [
     '$scope',
-    '$http',
-    function($scope, $http) {
+    'MovimentoService',
+    function($scope, MovimentoService) {
         $scope.fields = {
             codigoFolha: $scope.usuarioLogado.folhaSelecionada._id,
             tipo: 'E'
@@ -11,7 +11,7 @@ angular.module('guiaGasto').controller('MovimentoCtrl', [
 
         $scope.tipos = ['E', 'S'];
 
-        $http.get('rest/movimentos/folha/' + $scope.usuarioLogado.folhaSelecionada._id).then(function(movimentos) {
+        MovimentoService.obterMovimentosPorFolha($scope.usuarioLogado.folhaSelecionada).then(function(movimentos) {
             $scope.movimentos = movimentos.data;
         });
 

@@ -1,5 +1,10 @@
 <div layout="" ng-cloak>
     <span flex="15" class="hide show-gt-sm"></span>
+    <md-toolbar layout-margin class="md-warn md-hue-1" ng-show="movimentos.length === 0">
+        <h2 class="md-toolbar-tools">
+            <span>Ainda não há nenhum movimento :(</span>
+        </h2>
+    </md-toolbar>
     <md-content layout-padding flex="auto" ng-show="movimentos.length > 0">
         <md-toolbar class="md-whiteframe-z1">
             <div class="md-toolbar-tools" layout="row">
