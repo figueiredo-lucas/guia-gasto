@@ -10,6 +10,8 @@ angular.module('guiaGasto').controller('SaldoCtrl', [
             SaldoService.obterSaldoAtual($rootScope.usuarioLogado.folhaSelecionada).then(function(response) {
                 $rootScope.usuarioLogado.saldo = response.data.saldo;
                 $cookieStore.put('usuario', $rootScope.usuarioLogado);
+            }).catch(function(err) {
+                console.log(err);
             });
         }
 

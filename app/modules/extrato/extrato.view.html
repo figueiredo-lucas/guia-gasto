@@ -7,11 +7,11 @@
                 <div flex class="hide-xs">
                     <h2>Extrato</h2>
                 </div>
-                <div layout="row" layout-xs="column">
+                <div layout="row" layout-align="center center">
                     <!--<md-datepicker ng-model="dataInicial"></md-datepicker>
                     <md-datepicker ng-model="dataFinal"></md-datepicker>-->
 
-                    {{dataInicial | date: "dd 'de' MMM"}} à {{dataFinal | date: "dd 'de' MMM"}}
+                    <span hide-xs>{{dataInicial | date: "dd 'de' MMM"}} à {{dataFinal | date: "dd 'de' MMM"}}</span>
                     <md-button class="md-icon-button" type="button" aria-label="Data de exibição" ng-click="abrirDataModal($event)">
                         <md-icon md-svg-icon="assets/icons/date_range.svg"></md-icon>
                     </md-button>

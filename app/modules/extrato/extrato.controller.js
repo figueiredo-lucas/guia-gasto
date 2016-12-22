@@ -29,8 +29,12 @@ angular.module('guiaGasto').controller('ExtratoCtrl', [
                                     movimento.saldo = saldo.saldo;
                                     movimento._show = false;
                                 });
+                            }).catch(function(err) {
+                                console.log(err);
                             });
                     }
+                }).catch(function(err) {
+                    console.log(err);
                 });
         };
 

@@ -18,6 +18,8 @@ angular.module('guiaGasto').factory('LoginService', [
                         if (_.isFunction(success)) {
                             success(usuarioEncontrado);
                         }
+                    }).catch(function(err) {
+                        scope.$emit('toast', error.data, true);
                     });
                 }, error);
             },

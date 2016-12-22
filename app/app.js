@@ -3,8 +3,8 @@
 angular.module('guiaGasto', [
 
     'ngMessages',
-    'ngAnimate',
-    'ngAria',
+    // 'ngAnimate',
+    // 'ngAria',
     'ngMaterial',
     'ngCookies',
     'ui.router',
@@ -61,7 +61,7 @@ angular.module('guiaGasto', [
             $mdToast.show({
                 controller: ctrl,
                 template: '<md-toast class="error-toast">{{msg}}</md-toast>',
-                hideDelay: 5000,
+                hideDelay: 1000,
                 position: "top right",
                 locals: {
                     msg: texto

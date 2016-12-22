@@ -38,7 +38,7 @@ angular.module('lfPersistence').directive('editRemove', [
                             return val._id === pDto._id;
                         });
                         scope.$emit('toast', 'Registro removido com sucesso!');
-                    }, function(error) {
+                    }).catch(function(err) {
                         scope.$emit('toast', error.data, true);
                     });
                 };

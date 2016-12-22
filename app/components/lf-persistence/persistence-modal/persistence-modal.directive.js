@@ -18,11 +18,6 @@ angular.module('lfPersistence').directive('persistenceModal', [
             },
             link: function(scope, element, attrs) {
 
-                // var properties = {
-                //     transformRequest: angular.identity,
-                //     headers: { 'Content-Type': undefined }
-                // };
-
                 var edicao = $rootScope.$on('editar', function(ev, mouseEvent, dto) {
                     ev.stopPropagation();
                     if (angular.isDefined(attrs.preExecute)) {
@@ -31,28 +26,6 @@ angular.module('lfPersistence').directive('persistenceModal', [
                     scope.abrirModal(mouseEvent, dto);
                 });
 
-                // var getFormData = function(dto) {
-                //     var formData = new FormData();
-                //     for (var prop in dto) {
-                //         if (dto[prop] instanceof Blob) {
-                //             formData.append("file", dto[prop]);
-                //         } else {
-                //             formData.append(prop, dto[prop]);
-                //         }
-                //     }
-                //     return formData;
-                // };
-
-                // var existeFileField = function(dto) {
-                //     var propertyName = undefined;
-                //     for (var prop in dto) {
-                //         if (dto[prop] instanceof Blob) {
-                //             propertyName = prop;
-                //         }
-                //     }
-                //     return propertyName;
-                // };
-
                 scope.$on('$destroy', edicao);
 
                 var ctrl = function($scope, $mdDialog, list, dtoEdit, fields, endpoint) {
@@ -60,18 +33,20 @@ angular.module('lfPersistence').directive('persistenceModal', [
                     $scope.fields = fields;
 
                     var save = function(dto) {
-                        // var formData = getFormData(dto);
                         $http.post(endpoint, dto).then(function(obj) {
                             list.push(obj.data);
                             $scope.$emit('toast', 'Registro cadastrado com sucesso!');
+                        }).catch(function(err) {
+                            console.log(err);
                         });
                     };
 
                     var update = function(dto) {
                         angular.extend(dtoEdit, dto);
-                        // var formData = getFormData(dtoEdit);
                         $http.put(endpoint + '/' + dtoEdit._id, dtoEdit).then(function() {
                             $scope.$emit('toast', 'Registro atualizado com sucesso!');
+                        }).catch(function(err) {
+                            console.log(err);
                         });
                     };
 
@@ -88,10 +63,6 @@ angular.module('lfPersistence').directive('persistenceModal', [
                         $scope.form.$setSubmitted();
                         if ($scope.form.$valid) {
                             var dto = angular.copy(pDto);
-                            // var propertyName = existeFileField(dto);
-                            // if (propertyName) {
-                            //     dto[propertyName] = pDto[propertyName];
-                            // }
                             if (dtoEdit) {
                                 update(dto);
                             } else {

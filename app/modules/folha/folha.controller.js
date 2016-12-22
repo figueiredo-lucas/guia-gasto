@@ -14,6 +14,8 @@ angular.module('guiaGasto').controller('FolhaCtrl', [
                     $scope.usuarioLogado.folhas = response.data;
                     $scope.folhas = response.data;
                     $cookieStore.put('usuario', $scope.usuarioLogado);
+                }).catch(function(err) {
+                    scope.$emit('toast', error.data, true);
                 });
             }
         }, true);

@@ -13,6 +13,8 @@ angular.module('guiaGasto').controller('MovimentoCtrl', [
 
         MovimentoService.obterMovimentosPorFolha($scope.usuarioLogado.folhaSelecionada).then(function(movimentos) {
             $scope.movimentos = movimentos.data;
+        }).catch(function(err) {
+            scope.$emit('toast', error.data, true);
         });
 
         $scope.$watch('movimentos', function(movimentos, old) {
