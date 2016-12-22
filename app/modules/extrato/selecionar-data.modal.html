@@ -1,0 +1,34 @@
+<md-dialog aria-label="Datas" flex="50">
+    <form>
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h2>Selecionar datas</h2>
+                <span flex></span>
+                <md-button class="md-icon-button" ng-click="fechar()">
+                    <md-icon md-svg-icon="icons:close" aria-label="Fechar"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-dialog-content ng-form="form">
+            <div class="md-dialog-content" flex>
+                <div layout="row" flex>
+                    <md-input-container flex>
+                        <label>De</label>
+                        <md-datepicker ng-max-date="datas.dataFinal" ng-model="datas.dataInicial"></md-datepicker>
+                    </md-input-container>
+                    <md-input-container flex>
+                        <label>Até</label>
+                        <md-datepicker ng-min-date="datas.dataInicial" ng-model="datas.dataFinal"></md-datepicker>
+                    </md-input-container>
+                </div>
+            </div>
+        </md-dialog-content>
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="md-raised md-primary" ng-click="filtrar()">
+                Filtrar
+            </md-button>
+            <span flex></span>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

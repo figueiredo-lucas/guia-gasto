@@ -1,10 +1,14 @@
 angular.module('guiaGasto').factory('MovimentoService', [
     '$http',
-    function($http) {
+    'UtilService',
+    function($http, UtilService) {
         return {
-            obterMovimentosPorFolha: function(folha) {
-                return $http.get('rest/movimentos/folha/' + folha._id);
+            obterMovimentosPorFolha: function(folha, datas) {
+                var queryString = UtilService.parseQueryString(datas);
+                return $http.get('rest/movimentos/folha/' + folha._id + '?' + queryString);
             }
         }
+
+
     }
 ]);

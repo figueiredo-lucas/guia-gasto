@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('guiaGasto', [
-    'ui.router',
-    'ui.mask',
+
     'ngMessages',
+    'ngAnimate',
+    'ngAria',
     'ngMaterial',
-    'lfPersistence',
     'ngCookies',
+    'ui.router',
     'ui.utils.masks',
+    'lfPersistence',
 ]).config(function($mdIconProvider) {
     $mdIconProvider
         .iconSet('action', '../assets/iconsets/action-icons.svg', 24)
@@ -27,7 +29,7 @@ angular.module('guiaGasto', [
         .iconSet('social', '../assets/iconsets/social-icons.svg', 24)
         .iconSet('toggle', '../assets/iconsets/toggle-icons.svg', 24)
         .iconSet('avatar', '../assets/iconsets/avatar-icons.svg', 128);
-}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider) {
+}).config(function($urlRouterProvider, $locationProvider, $mdThemingProvider, $mdDateLocaleProvider) {
     $mdThemingProvider.theme("error-toast");
 
     $mdThemingProvider.theme('default')
@@ -36,6 +38,16 @@ angular.module('guiaGasto', [
     $urlRouterProvider.otherwise('/');
 
     $locationProvider.html5Mode(true);
+
+    $mdDateLocaleProvider.formatDate = function(date) {
+        return moment(date).format('DD/MM/YYYY');
+    };
+
+    $mdDateLocaleProvider.parseDate = function(dateString) {
+        var m = moment(dateString, 'DD/MM/YYYY', true);
+        return m.isValid() ? m.toDate() : new Date(NaN);
+    };
+
 }).run(function($rootScope, $mdToast, $cookieStore) {
 
     $rootScope.usuarioLogado = $cookieStore.get('usuario');

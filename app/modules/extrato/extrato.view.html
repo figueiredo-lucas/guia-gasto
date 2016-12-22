@@ -4,12 +4,15 @@
     <md-content layout-padding flex="auto">
         <md-toolbar class="md-whiteframe-z1">
             <div class="md-toolbar-tools" layout="row">
-                <div flex>
+                <div flex class="hide-xs">
                     <h2>Extrato</h2>
                 </div>
-                <div layout="row" layout-align="end center">
-                    <div class="data-pequena"><span class="cinza">{{dataInicial | date: "dd 'de' MMM"}}</span> à <span class="cinza">{{dataFinal | date: "dd 'de' MMM"}}</span></div>
-                    <md-button class="md-icon-button" type="button" aria-label="Data de exibição">
+                <div layout="row" layout-xs="column">
+                    <!--<md-datepicker ng-model="dataInicial"></md-datepicker>
+                    <md-datepicker ng-model="dataFinal"></md-datepicker>-->
+
+                    {{dataInicial | date: "dd 'de' MMM"}} à {{dataFinal | date: "dd 'de' MMM"}}
+                    <md-button class="md-icon-button" type="button" aria-label="Data de exibição" ng-click="abrirDataModal($event)">
                         <md-icon md-svg-icon="assets/icons/date_range.svg"></md-icon>
                     </md-button>
                 </div>
