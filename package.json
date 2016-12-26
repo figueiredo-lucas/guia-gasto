@@ -2,9 +2,9 @@
     "name": "guia-gasto",
     "version": "1.0.0",
     "description": "Guia simples de gastos diários",
-    "main": "index.js",
+    "main": "app.js",
     "scripts": {
-        "test": "echo \"Error: no test specified\" && exit 1"
+        "start": "node app.js"
     },
     "author": "lucas.figueiredo",
     "license": "ISC",
