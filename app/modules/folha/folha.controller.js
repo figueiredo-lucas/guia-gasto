@@ -13,6 +13,10 @@ angular.module('guiaGasto').controller('FolhaCtrl', [
                 FolhaService.obterFolhaPorUsuario($scope.usuarioLogado).then(function(response) {
                     $scope.usuarioLogado.folhas = response.data;
                     $scope.folhas = response.data;
+                    if ($scope.folhas.length === 1) {
+                        $scope.usuarioLogado.folhaSelecionada = $scope.folhas[0];
+                        $scope.$emit('atualizar-saldo');
+                    }
                     $cookieStore.put('usuario', $scope.usuarioLogado);
                 }).catch(function(err) {
                     scope.$emit('toast', error.data, true);
@@ -22,7 +26,13 @@ angular.module('guiaGasto').controller('FolhaCtrl', [
 
         $scope.fields = {
             primeiraFolha: false,
-            codigoUsuario: $scope.usuarioLogado._id
+            codigoUsuario: $scope.usuarioLogado._id,
+            updateValue: function(dto) {
+                if (dto && $scope.fields.primeiraFolha) {
+                    dto.folhaPadrao = true;
+                    $scope.fields.primeiraFolha = undefined;
+                }
+            }
         };
 
         if ($scope.folhas.length === 0) {

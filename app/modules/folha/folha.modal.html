@@ -11,13 +11,13 @@
             </div>
         </md-toolbar>
         <span ng-show="false">
-        {{fields.primeiraFolha ? dto.folhaPadrao = true: ''}} {{dto.codigoUsuario = fields.codigoUsuario}}
+        {{fields.updateValue(dto)}} {{dto.codigoUsuario = fields.codigoUsuario}}
         </span>
         <md-dialog-content ng-form="form">
             <div class="md-dialog-content" flex>
                 <div layout="row" flex>
                     <md-input-container flex>
-                        <md-switch ng-model="dto.folhaPadrao" aria-label="Folha padrão" ng-disabled="fields.primeiraFolha">
+                        <md-switch ng-model="dto.folhaPadrao" aria-label="Folha padrão">
                             Folha padrão
                         </md-switch>
                     </md-input-container>

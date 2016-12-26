@@ -51,7 +51,6 @@ angular.module('guiaGasto', [
 }).run(function($rootScope, $mdToast, $cookieStore) {
 
     $rootScope.usuarioLogado = $cookieStore.get('usuario');
-    console.log($cookieStore.get('usuario'));
 
     $rootScope.$on('toast', function(ev, texto, erro) {
         if (erro) {

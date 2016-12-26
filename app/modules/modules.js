@@ -14,6 +14,12 @@ angular.module('guiaGasto').config(function($stateProvider) {
         controller: 'LoginCtrl'
     });
 
+    $stateProvider.state('base.inicio', {
+        url: 'inicio',
+        templateUrl: 'app/modules/base/inicio.view.html',
+        controller: 'MovimentoStandaloneCtrl'
+    });
+
     $stateProvider.state('base.movimento', {
         url: 'movimento',
         templateUrl: 'app/modules/movimento/movimento.view.html',

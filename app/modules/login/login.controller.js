@@ -19,7 +19,7 @@ angular.module('guiaGasto').controller('LoginCtrl', [
                     if (response.folhas.length === 0) {
                         return $state.go('base.folha');
                     }
-                    return $state.go('base');
+                    return $state.go('base.inicio');
                 }, function(err) {
                     $scope.$emit('toast', err.data, true)
                 });
