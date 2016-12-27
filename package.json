@@ -4,7 +4,7 @@
     "description": "Guia simples de gastos diários",
     "main": "server/app.js",
     "scripts": {
-        "start": "gulp",
+        "start": "node server/app.js",
         "postinstall": "bower install"
     },
     "author": "lucas.figueiredo",
