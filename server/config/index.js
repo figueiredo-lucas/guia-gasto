@@ -6,14 +6,12 @@ module.exports = {
     mongo: {
         uri: (function() {
             var mongo_connection = 'mongodb://localhost/guia-gasto';
-            console.log(process.env);
             if (process.env.MONGODB_SERVICE_HOST) {
                 mongo_connection = 'mongodb://figueiredo:123456@' +
                     process.env.MONGODB_SERVICE_HOST + ':' +
                     process.env.MONGODB_SERVICE_PORT + '/' +
                     process.env.OPENSHIFT_BUILD_NAMESPACE;
             }
-            console.log(mongo_connection)
             return mongo_connection;
         })()
     },
