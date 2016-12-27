@@ -15,7 +15,7 @@ module.exports = {
             return mongo_connection;
         })()
     },
-    port: process.env.OPENSHIFT_NODEJS_PORT || 8080,
-    ip: process.env.OPENSHIFT_NODEJS_IP || '10.1.69.3',
+    port: process.env.PORT || process.env.OPENSHIFT_NODEJS_PORT || 3000,
+    ip: process.env.IP || process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     root: path.normalize(__dirname + '/../..')
 };
