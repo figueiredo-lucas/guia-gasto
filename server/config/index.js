@@ -15,7 +15,7 @@ module.exports = {
             return mongo_connection;
         })()
     },
-    port: process.env.GGWP_SERVICE_PORT || 3000,
-    ip: process.env.GGWP_SERVICE_HOST || '0.0.0.0',
+    port: process.env.OPENSHIFT_NODEJS_PORT || 3000,
+    ip: process.env.OPENSHIFT_NODEJS_IP || '0.0.0.0',
     root: path.normalize(__dirname + '/../..')
 };
