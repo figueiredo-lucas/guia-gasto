@@ -28,6 +28,7 @@ var server = require('http').createServer(app);
 
 // console.log(path.join(config.root, 'bower_components'));
 app.use('/', express.static(path.join(config.root, '/')));
+app.use('/static', express.static(path.join(config.root, '/')));
 app.use(express.static(path.join(config.root, 'app')));
 app.set('appPath', path.join(config.root, 'app'));
 app.use(bodyParser.urlencoded({
