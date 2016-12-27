@@ -24,7 +24,7 @@
                 <div layout-xs="column" layout="row">
                     <md-input-container flex-gt-xs="20" flex>
                         <label>Valor (R$)</label>
-                        <input ng-model="dto.valor" name="valor" ui-money-mask="2" required />
+                        <input ng-model="dto.valor" name="valor" ui-money-mask="2" required autocomplete="off" />
                         <div ng-messages="form.valor.$error">
                             <div ng-message="required">Campo Valor (R$) é obrigatório</div>
                         </div>

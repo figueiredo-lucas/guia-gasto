@@ -7,7 +7,7 @@ angular.module('guiaGasto').controller('LoginCtrl', [
     'LoginService',
     function($scope, $rootScope, $state, LoginService) {
         if (LoginService.usuarioLogado()) {
-            return $state.go('base');
+            return $state.go('base.inicio');
         }
         //criar lógica para verificar se estou logado, se sim, enviar para a tela base (base.inicio)
 

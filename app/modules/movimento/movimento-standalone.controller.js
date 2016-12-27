@@ -5,28 +5,36 @@ angular.module('guiaGasto').controller('MovimentoStandaloneCtrl', [
     '$http',
     '$mdDialog',
     '$mdMedia',
+    '$document',
     'MovimentoService',
-    function($scope, $http, $mdDialog, $mdMedia, MovimentoService) {
+    function($scope, $http, $mdDialog, $mdMedia, $document, MovimentoService) {
         $scope.fields = {
             codigoFolha: $scope.usuarioLogado.folhaSelecionada._id
         };
 
-        var ctrl = function($scope, fields) {
+        var MovCtrl = function($scope, fields) {
             $scope.fields = fields;
 
             $scope.fechar = function() {
                 $mdDialog.hide();
             };
 
+            var onBackButton = document.addEventListener('backbutton', function(ev) {
+                document.removeEventListener("backbutton", onBackButton, false);
+                $scope.fechar();
+            });
+
             $scope.salvar = function(dto) {
                 $scope.form.$setSubmitted();
-                $http.post('rest/movimentos', dto).then(function(obj) {
-                    $scope.$emit('atualizar-saldo');
-                    $scope.fechar();
-                    $scope.$emit('toast', 'Registro cadastrado com sucesso!');
-                }).catch(function(err) {
-                    console.log(err);
-                });
+                if ($scope.form.$valid) {
+                    $http.post('rest/movimentos', dto).then(function(obj) {
+                        $scope.$emit('atualizar-saldo');
+                        $scope.fechar();
+                        $scope.$emit('toast', 'Registro cadastrado com sucesso!');
+                    }).catch(function(err) {
+                        console.log(err);
+                    });
+                }
             };
         };
 
@@ -35,7 +43,7 @@ angular.module('guiaGasto').controller('MovimentoStandaloneCtrl', [
             var useFullScreen = ($mdMedia('sm') || $mdMedia('xs'));
             ev.stopImmediatePropagation();
             $mdDialog.show({
-                controller: ctrl,
+                controller: MovCtrl,
                 templateUrl: 'app/modules/movimento/movimento.modal.html',
                 targetEvent: ev,
                 clickOutsideToClose: true,

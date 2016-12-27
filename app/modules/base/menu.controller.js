@@ -49,7 +49,7 @@ angular.module('guiaGasto').controller('MenuCtrl', [
                     $cookieStore.put('usuario', usuarioLogado);
                     $scope.fechar();
                     $scope.$emit('atualizar-saldo');
-                    $state.go('base');
+                    $state.go('base.inicio');
                 }
             });
         };
