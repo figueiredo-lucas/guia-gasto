@@ -5,12 +5,15 @@ var path = require('path');
 module.exports = {
     mongo: {
         uri: (function() {
-            var db_name = 'guia-gasto';
-            var mongo_connection = 'mongodb://localhost/';
-            if (process.env.OPENSHIFT_MONGODB_DB_URL) {
-                mongo_connection = process.env.OPENSHIFT_MONGODB_DB_URL;
+            var mongo_connection = 'mongodb://localhost/guia-gasto';
+            if(process.env.OPENSHIFT_MONGODB_DB_PASSWORD){
+                mongo_connection = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
+                process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
+                process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
+                process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
+                process.env.OPENSHIFT_APP_NAME;
             }
-            return mongo_connection + db_name;
+            return mongo_connection;
         })()
     },
     port: process.env.OPENSHIFT_NODEJS_PORT || 3000,
