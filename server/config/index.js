@@ -7,12 +7,11 @@ module.exports = {
         uri: (function() {
             var mongo_connection = 'mongodb://localhost/guia-gasto';
             console.log(process.env);
-            if (process.env.OPENSHIFT_MONGODB_DB_PASSWORD) {
-                mongo_connection = process.env.OPENSHIFT_MONGODB_DB_USERNAME + ":" +
-                    process.env.OPENSHIFT_MONGODB_DB_PASSWORD + "@" +
-                    process.env.OPENSHIFT_MONGODB_DB_HOST + ':' +
-                    process.env.OPENSHIFT_MONGODB_DB_PORT + '/' +
-                    process.env.OPENSHIFT_APP_NAME;
+            if (process.env.MONGODB_SERVICE_HOST) {
+                mongo_connection = 'mongodb://' +
+                    process.env.MONGODB_SERVICE_HOST + '/' +
+                    process.env.MONGODB_SERVICE_PORT + '/' +
+                    process.env.OPENSHIFT_BUILD_NAMESPACE;
             }
             console.log(mongo_connection)
             return mongo_connection;
