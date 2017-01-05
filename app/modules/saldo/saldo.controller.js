@@ -7,7 +7,7 @@ angular.module('guiaGasto').controller('SaldoCtrl', [
     function($rootScope, $cookieStore, SaldoService) {
 
         var buscarSaldo = function() {
-            if ($rootScope.usuarioLogado.folhaSelecionada) {
+            if ($rootScope.usuarioLogado && $rootScope.usuarioLogado.folhaSelecionada) {
                 SaldoService.obterSaldoAtual($rootScope.usuarioLogado.folhaSelecionada).then(function(response) {
                     $rootScope.usuarioLogado.saldo = response.data.saldo;
                     $cookieStore.put('usuario', $rootScope.usuarioLogado);
