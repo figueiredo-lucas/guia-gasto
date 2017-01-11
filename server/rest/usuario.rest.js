@@ -9,7 +9,7 @@ module.exports = function(config) {
 
     router.post('/login', function(req, res) {
         var usrReq = req.body;
-        Usuario.find({ login: usrReq.login }, function(err, usuarios) {
+        Usuario.find({ login: usrReq.login.toLowerCase() }, function(err, usuarios) {
             if (usuarios.length > 0) {
                 var usr = usuarios[0];
                 if (usr.senha === encrypt(usrReq.senha)) {

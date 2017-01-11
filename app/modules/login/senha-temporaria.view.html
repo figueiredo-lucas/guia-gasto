@@ -1,0 +1,57 @@
+<form name="frmLogin">
+    <div layout="row">
+        &nbsp;
+    </div>
+    <div layout="row" flex>
+        <div class="logo big-logo center"></div>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Usuário</label>
+            <input ng-model="dto.login" disabled/>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Senha atual</label>
+            <input type="password" name="password" ng-model="dto.senha" required md-no-asterisk />
+            <div ng-messages="frmLogin.password.$error">
+                <div ng-message="required">Campo senha atual é obrigatório</div>
+            </div>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Senha nova</label>
+            <input type="password" name="senhaNova" ng-model="dto.senhaNova" required md-no-asterisk />
+            <div ng-messages="frmLogin.senhaNova.$error">
+                <div ng-message="required">Campo senha nova é obrigatório</div>
+            </div>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-input-container flex>
+            <label>Confirme a nova senha</label>
+            <input type="password" name="confirmSenha" ng-model="dto.confirmSenha" pwd-match="dto.senhaNova" required md-no-asterisk />
+            <div ng-messages="frmLogin.confirmSenha.$error">
+                <div ng-message="required">A confirmação da nova senha é obrigatória</div>
+                <div ng-message="pwdmatch">Senhas não conferem</div>
+            </div>
+        </md-input-container>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+    <div layout="row" flex>
+        <span flex="40" class="hide-xs"></span>
+        <md-button flex class="md-raised md-primary" ng-click="atualizarSenhaTemporaria(dto)">
+            Atualizar Senha
+        </md-button>
+        <span flex="40" class="hide-xs"></span>
+    </div>
+</form>

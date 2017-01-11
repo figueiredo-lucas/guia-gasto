@@ -6,22 +6,30 @@ angular.module('guiaGasto').controller('LoginCtrl', [
     '$state',
     'LoginService',
     function($scope, $rootScope, $state, LoginService) {
+
         if (LoginService.usuarioLogado()) {
-            return $state.go('base.inicio');
+            if (LoginService.usuarioLogado().senhaTemporaria) {
+                return $state.go('senhaTemporaria');
+            } else {
+                return $state.go('base.inicio');
+            }
         }
-        //criar lógica para verificar se estou logado, se sim, enviar para a tela base (base.inicio)
 
         $scope.acessar = function(dto) {
             $scope.frmLogin.$setSubmitted();
             if ($scope.frmLogin.$valid) {
                 LoginService.acessar(dto, function(response) {
                     $rootScope.usuarioLogado = response;
-                    if (response.folhas.length === 0) {
-                        return $state.go('base.folha');
+                    if (response.senhaTemporaria) {
+                        return $state.go('senhaTemporaria');
+                    } else {
+                        if (response.folhas.length === 0) {
+                            return $state.go('base.folha');
+                        }
+                        return $state.go('base.inicio');
                     }
-                    return $state.go('base.inicio');
                 }, function(err) {
-                    $scope.$emit('toast', err.data, true)
+                    $scope.$emit('toast', err.data, true);
                 });
             }
         };

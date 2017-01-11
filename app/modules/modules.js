@@ -14,6 +14,12 @@ angular.module('guiaGasto').config(function($stateProvider) {
         controller: 'LoginCtrl'
     });
 
+    $stateProvider.state('senhaTemporaria', {
+        url: '/senha-temporaria',
+        templateUrl: 'app/modules/login/senha-temporaria.view.html',
+        controller: 'SenhaTemporariaCtrl'
+    });
+
     $stateProvider.state('base.inicio', {
         url: 'inicio',
         templateUrl: 'app/modules/base/inicio.view.html',

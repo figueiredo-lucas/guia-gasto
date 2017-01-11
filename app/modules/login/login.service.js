@@ -3,6 +3,7 @@ angular.module('guiaGasto').factory('LoginService', [
     '$http',
     'FolhaService',
     function($cookieStore, $http, FolhaService) {
+
         return {
             acessar: function(usuario, success, error) {
                 $http.post('rest/usuarios/login', usuario).then(function(response) {
@@ -18,9 +19,17 @@ angular.module('guiaGasto').factory('LoginService', [
                         if (_.isFunction(success)) {
                             success(usuarioEncontrado);
                         }
-                    }).catch(function(err) {
-                        scope.$emit('toast', error.data, true);
-                    });
+                    }, error);
+                }, error);
+            },
+            atualizarSenhaTemporaria: function(usuario, success, error) {
+                $http.put('rest/usuarios/' + usuario._id, usuario).then(function() {
+                    var usuarioEncontrado = $cookieStore.get('usuario');
+                    usuarioEncontrado.senhaTemporaria = false;
+                    $cookieStore.put('usuario', usuarioEncontrado);
+                    if (_.isFunction(success)) {
+                        success(usuarioEncontrado);
+                    }
                 }, error);
             },
             usuarioLogado: function() {

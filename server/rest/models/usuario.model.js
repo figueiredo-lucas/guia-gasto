@@ -8,7 +8,11 @@ var md5crypt
 
 var Usuario = new Schema({
     login: String,
-    senha: String
+    senha: String,
+    senhaTemporaria: {
+        type: Boolean,
+        default: true
+    }
 });
 
 Usuario.pre('save', function(next) {
